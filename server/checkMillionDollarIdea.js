@@ -1,9 +1,6 @@
-const { getFromDatabaseById } = require('./db');
-
 const checkMillionDollarIdea = (req, res, next) => {
-    const numWeeks = req.body.numWeeks;
-    const weeklyRevenue = req.body.weeklyRevenue;
-    const worth1Mil = numWeeks * weeklyRevenue >= 1000000;
+    const { numWeeks, weeklyRevenue } = req.body;
+    const worth1Mil = Number(numWeeks) * Number(weeklyRevenue) >= 1000000;
     if (worth1Mil) {
         next();
     }
